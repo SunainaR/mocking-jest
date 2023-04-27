@@ -23,4 +23,16 @@ describe('ShoppingBasket Class', () => {
     expect(basket.getPrice()).toEqual(12.97)
   });
 
+  it('apply discount', () => {
+    basket = new ShoppingBasket()
+    const doubleCandy1 = { getPrice: () => 4.99}
+    basket.addItem(doubleCandy1)
+    const doubleCandy2 = { getPrice: () => 3.99}
+    basket.addItem(doubleCandy2);
+    basket.addItem(doubleCandy2);
+    expect(basket.getPrice()).toEqual(12.97)
+    basket.applyDiscount(0.97)
+    expect(basket.getPrice()).toEqual(12.00)
+  });
+
 })
